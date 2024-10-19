@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1;
+﻿namespace ConsoleApp1.L5OOP;
 
 public class Civilian : Customer
 {

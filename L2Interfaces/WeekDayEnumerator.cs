@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace ConsoleApp1;
+namespace ConsoleApp1.L2Interfaces;
 
 public class WeekDayEnumerator : IEnumerator<WeekDay>
 {

@@ -2,7 +2,5 @@
 
 public interface ILesson
 {
-    public void Run()
-    {
-    }
+    public void Run();
 }

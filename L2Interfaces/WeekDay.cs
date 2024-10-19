@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1;
+﻿namespace ConsoleApp1.L2Interfaces;
 
 public class WeekDay
 {

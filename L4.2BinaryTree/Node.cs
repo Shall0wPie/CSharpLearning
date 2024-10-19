@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1;
+﻿namespace ConsoleApp1.L4._2BinaryTree;
 
 public class Node
 {

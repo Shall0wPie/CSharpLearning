@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp1;
+﻿using ConsoleApp1.L3LinkedList;
+
+namespace ConsoleApp1.L4._1HashTable;
 
 public class L4_1HashTable : ILesson
 {

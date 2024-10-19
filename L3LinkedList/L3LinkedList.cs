@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1;
+﻿namespace ConsoleApp1.L3LinkedList;
 
 public class L3LinkedList : ILesson
 {

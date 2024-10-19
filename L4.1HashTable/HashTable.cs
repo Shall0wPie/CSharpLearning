@@ -1,20 +1,20 @@
-﻿namespace ConsoleApp1;
+﻿namespace ConsoleApp1.L4._1HashTable;
 
 public class HashTable<T>
 {
     protected uint _size;
-    protected List<T>[] _arr;
+    protected L3LinkedList.List<T>[] _arr;
 
     public HashTable() : this(10) { }
     
     public HashTable(uint size)
     {
         _size = size;
-        _arr = new List<T>[_size];
+        _arr = new L3LinkedList.List<T>[_size];
 
         for (var i = 0; i < _size; i++)
         {
-            _arr[i] = new List<T>();
+            _arr[i] = new L3LinkedList.List<T>();
         }
     }
 
