@@ -6,9 +6,9 @@ namespace ConsoleApp1.L7Delivery.Companies;
 
 public class MagicColor : Company
 {
-    public OrderInformation MakeOrderRequest(string address, string clientName, decimal orderPrice, Colors boxColor, Colors tapeColor)
+    public void MakeOrderRequest(string address, string clientName, decimal orderPrice, Colors boxColor, Colors tapeColor)
     {
-        return new OrderInformation
+        var orderInformation = new OrderInformation
         {
             Address = address,
             ClientName = clientName,
@@ -16,5 +16,7 @@ public class MagicColor : Company
             BoxColor = boxColor,
             TapeColor = tapeColor
         };
+        
+        SendEvent(orderInformation);
     }
 }

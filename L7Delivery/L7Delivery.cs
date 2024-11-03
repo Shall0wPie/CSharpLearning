@@ -11,8 +11,14 @@ public class L7Delivery : ILesson
         var goldSecret  = new GoldSecret();
         var magicColor = new MagicColor();
         var simpleFirm = new SimpleFirm();
+
+
+        goldSecret.MakeOrderRequest("Адрес1", "Биба", 80);
+        magicColor.MakeOrderRequest("Адрес2", "Стас Барецкий", 100, Colors.Red, Colors.Yellow);
+        goldSecret.MakeOrderRequest("Адрес3", "Боба", 90);
+        simpleFirm.MakeOrderRequest("Адрес4", "Чича", 50);
         
-        OrderManager.CreateNewOrder(
+        /*OrderManager.CreateNewOrder(
             goldSecret,
             goldSecret.MakeOrderRequest("Адрес1", "Биба", 80));
         
@@ -27,6 +33,7 @@ public class L7Delivery : ILesson
         OrderManager.CreateNewOrder(
             simpleFirm,
             simpleFirm.MakeOrderRequest("Адрес4", "Чича", 50));
+            */
         
         Console.WriteLine("Текущие заказы");
         OrderManager.ShowOrderList();

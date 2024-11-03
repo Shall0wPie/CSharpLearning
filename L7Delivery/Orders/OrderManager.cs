@@ -4,13 +4,19 @@ namespace ConsoleApp1.L7Delivery.Orders;
 
 public static class OrderManager
 {
-    private static List<Order> orders = new List<Order>();
+    private static List<Order> orders = new();
 
-    public static void CreateNewOrder(Company requester, OrderInformation orderInformation)
+    public static void RegisterCompany(Company company)
     {
+        company.NewOrderEvent += CreateNewOrder;
+    }
+
+    private static void CreateNewOrder(object? sender, MyEventArgs eventArgs)
+    {
+        var orderInformation = eventArgs.OrderInformation;
         var totalPrice = PriceCalculator.CalculatePrice(orderInformation);
 
-        orders.Add(new Order(requester, orderInformation, totalPrice));
+        orders.Add(new Order(sender as Company, orderInformation, totalPrice));
     }
 
     public static void SendOrdersToDelivery(int orderAmount)

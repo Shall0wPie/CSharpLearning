@@ -5,9 +5,9 @@ namespace ConsoleApp1.L7Delivery.Companies;
 
 public class GoldSecret : Company
 {
-    public OrderInformation MakeOrderRequest(string address, string clientName, decimal orderPrice)
+    public void MakeOrderRequest(string address, string clientName, decimal orderPrice)
     {
-        return new OrderInformation
+        var orderInformation =  new OrderInformation
         {
             Address = address,
             ClientName = clientName,
@@ -16,5 +16,7 @@ public class GoldSecret : Company
             BoxType = BoxType.Solid,
             IsFragile = true
         };
+        
+        SendEvent(orderInformation);
     }
 }
