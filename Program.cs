@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         //LessonRunner.ShowLatestLessonResult();
-        LessonRunner.ShowResult(typeof(L7Delivery.L7Delivery));
+        LessonRunner.ShowResult(typeof(GameLife.GameLife));
         //LessonRunner.ShowAllResults();
     }
 }
