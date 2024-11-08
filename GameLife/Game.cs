@@ -1,8 +1,16 @@
-﻿namespace ConsoleApp1.GameLife;
+﻿using ConsoleApp1.L7Delivery.Orders;
+
+namespace ConsoleApp1.GameLife;
 
 public class Game
 {
-    public int Tick = 100;
+    private int _tick;
+    public int Tick
+    {
+        get => _tick;
+        set => _tick = int.Clamp(value, 0, int.MaxValue);
+    }
+    
     public bool IsEnabledStatistic = true;
 
     private int _height;
@@ -16,9 +24,11 @@ public class Game
 
     private bool _isFirstField = true;
     private int _cycle = 1;
+    private bool _isRunning = true;
 
     public Game(char[][] initialField)
     {
+        Tick = 100;
         _height = initialField.Length;
         _width = initialField[0].Length;
         
@@ -34,18 +44,41 @@ public class Game
 
     public void StartGame()
     {
-        while (true)
+        Task.Factory.StartNew(KeyReader);
+        
+        while (_isRunning)
         {
             Task.WaitAll(Update(), Task.Delay(Tick));
+        }
+    }
+
+    private void KeyReader()
+    {
+        while (_isRunning)
+        {
+            var key = Console.ReadKey();
+
+            switch (key.Key)
+            {
+                case ConsoleKey.C:
+                    _isRunning = false;
+                    break;
+                case ConsoleKey.OemPlus:
+                    Tick += 10 * ((key.Modifiers & ConsoleModifiers.Shift) != 0 ? 10 : 1);
+                    break;
+                case ConsoleKey.OemMinus:
+                    Tick -= 10 * ((key.Modifiers & ConsoleModifiers.Shift) != 0 ? 10 : 1);
+                    break;
+            }
         }
     }
 
     private async Task Update()
     {
         var currentField = _isFirstField ? _firstField : _secondField;
-        
+
         Console.Clear();
-        
+
         foreach (var row in currentField)
         {
             Console.WriteLine(row);
@@ -106,5 +139,6 @@ public class Game
     {
         Console.WriteLine($"Cycle: {_cycle}");
         Console.WriteLine($"Process time: {elapsedMs} ms");
+        Console.WriteLine($"Tick time: {Tick} ms");
     }
 }
